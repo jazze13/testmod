@@ -10,14 +10,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AlabugiteItem extends Item {
-    public AlabugiteItem(Properties properties) {
+public class ShardynaItem extends Item {
+    public ShardynaItem(Properties properties) {
         super(properties);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("itemTooltip.testmod.alabugite_desctiption").withStyle(ChatFormatting.GOLD));
+        tooltip.add(Component.translatable("itemTooltip.testmod.shardyna").withStyle(ChatFormatting.GOLD));
     }
 
 }

@@ -26,19 +26,20 @@ public class ModItems {
     public static final ResourceKey<CreativeModeTab> CUSTOM_ITEM_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), new ResourceLocation(Testmod.MOD_ID, "item_group"));
     public static final CreativeModeTab CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModItems.ALABUGITE_SWORD))
-            .title(Component.translatable("itemGroup.example-mod"))
+            .title(Component.translatable("itemGroup.testmod"))
             .build();
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.accept(ModItems.SHARDYNA);
             itemGroup.accept(ModItems.ALABUGITE);
             itemGroup.accept(ModItems.ALABUGITE_SWORD);
-            itemGroup.accept(ModItems.GUIDITE_HELMET);
-            itemGroup.accept(ModItems.GUIDITE_CHESTPLATE);
-            itemGroup.accept(ModItems.GUIDITE_LEGGINGS);
-            itemGroup.accept(ModItems.GUIDITE_BOOTS);
+            itemGroup.accept(ModItems.ALABUGITE_HELMET);
+            itemGroup.accept(ModItems.ALABUGITE_CHESTPLATE);
+            itemGroup.accept(ModItems.ALABUGITE_LEGGINGS);
+            itemGroup.accept(ModItems.ALABUGITE_BOOTS);
             itemGroup.accept(ModItems.ALABUGITE_AXE);
             itemGroup.accept(ModItems.ALABUGITE_HOE);
             itemGroup.accept(ModItems.ALABUGITE_PICKAXE);
@@ -51,8 +52,10 @@ public class ModItems {
     }
 
 
-    public static final AlabugiteItem ALABUGITE = register(
-        new AlabugiteItem(
+    public static final Item ALABUGITE = register(new Item(new FabricItemSettings()),"alabugite");
+
+    public static final ShardynaItem SHARDYNA = register(
+        new ShardynaItem(
             new FabricItemSettings()
                 .food(
                     new FoodProperties.Builder()
@@ -64,7 +67,7 @@ public class ModItems {
                         .build()
                 )
         ),
-        "alabugite"
+        "shardyna"
     );
 
     // weapons
@@ -77,8 +80,8 @@ public class ModItems {
     public static final Item ALABUGITE_HOE = register(new HoeItem(AlabugiteMaterial.INSTANCE, 2, 0, new FabricItemSettings()), "alabugite_hoe");
 
     // armor
-    public static final Item GUIDITE_HELMET = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new Item.Properties()), "alabugite_helmet");
-    public static final Item GUIDITE_BOOTS = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new Item.Properties()), "alabugite_boots");
-    public static final Item GUIDITE_LEGGINGS = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new Item.Properties()), "alabugite_leggings");
-    public static final Item GUIDITE_CHESTPLATE = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new Item.Properties()), "alabugite_chestplate");
+    public static final Item ALABUGITE_HELMET = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new Item.Properties()), "alabugite_helmet");
+    public static final Item ALABUGITE_BOOTS = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new Item.Properties()), "alabugite_boots");
+    public static final Item ALABUGITE_LEGGINGS = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new Item.Properties()), "alabugite_leggings");
+    public static final Item ALABUGITE_CHESTPLATE = register(new ArmorItem(AlabugiteArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new Item.Properties()), "alabugite_chestplate");
 }
